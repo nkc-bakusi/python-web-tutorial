@@ -8,4 +8,8 @@ def hello():
 def add():
   return template('add.html', title='Hello Python!!')
 
-run(host='localhost', port=8080, debug=True)
+@route('/')
+def index():
+  return 'Hello index page!!'
+
+run(host='localhost', port=8080, debug=True, reloader=True)
