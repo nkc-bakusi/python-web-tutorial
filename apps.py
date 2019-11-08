@@ -1,4 +1,8 @@
-from bottle import route, run, template
+from bottle import route, run, template, error
+
+@route('/')
+def index():
+    return template('Hello {{ title }} page!!', title='top')
 
 @route('/hello')
 def hello():
@@ -6,6 +10,11 @@ def hello():
 
 @route('/add')
 def add():
-  return template('add.html', title='Hello Python!!')
+    return template('add.html', title='Hello Python!!', flag=True)
 
-run(host='localhost', port=8080, debug=True)
+@error(404)
+def error404(error):
+    return '<h1>404 Page Not found'
+
+
+run(host='localhost', port=8080, debug=True, reloader=True)
