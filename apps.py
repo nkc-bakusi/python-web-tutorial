@@ -10,7 +10,7 @@ def hello():
 
 @route('/add')
 def add():
-    return template('add.html', title='Hello Python!!')
+    return template('add.html', title='Hello Python!!', flag=True)
 
 @error(404)
 def error404(error):
